@@ -1,7 +1,18 @@
 from tkinter import *
-from Grip import *
+from PIL import Image
+from pystray import Icon as Tray, Menu as TrayMenu, MenuItem as TrayMenuItem
+# from Grip import *
+
+
+# Global variables
+imageIcon = Image.open("./images/icon.ico")
+
+
+def exitApp(icon, item):
+    icon.stop()
 
 def main():
+    '''
     root = Tk()
     root.geometry("200x200")
     root.resizable(0, 0)
@@ -14,5 +25,10 @@ def main():
     grip = Grip(back, goingBeyond=False)
 
     root.mainloop()
+    '''
 
+
+Tray("TimeControl", imageIcon, menu=TrayMenu(
+    TrayMenuItem('Quit', exitApp)
+    )).run()
 main()
